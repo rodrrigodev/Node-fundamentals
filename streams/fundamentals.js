@@ -19,8 +19,8 @@ class OneToHundred extends Readable{
 
 class InverseNumber extends Transform {
     _transform(chunk, encoding, callback){
-        const Transformed = Number(chunk.toString()) * -1
-        callback(null, Buffer.from(String(Transformed)))
+        const transformed = Number(chunk.toString()) * -1
+        callback(null, Buffer.from(String(transformed)))
     }
 }
 
@@ -32,5 +32,5 @@ class MultiplyByTenStream extends Writable {
 }
 
 new OneToHundred()
-.pipe(new InverseNumber())
+    .pipe(new InverseNumber())
     .pipe(new MultiplyByTenStream())
